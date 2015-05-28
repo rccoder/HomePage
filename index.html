@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Callbacks - fullPage.js</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage callback function." />
+	<meta name="keywords"  content="fullpage,jquery,demo,callbac,function,event" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="./jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="./examples.css" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="./jquery.min.js"></script>
+	<script src="./jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="./jquery.fullPage.js"></script>
+	<script type="text/javascript" src="examples.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#ccddff', 'rgba(0, 0, 0, 0.5)'],
+				anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+				menu: '#menu',
+				afterLoad: function(anchorLink, index){
+
+					//section 2
+					if(index == 2){
+						//moving the image
+						$('#section1').find('img').delay(500).animate({
+							left: '0%'
+						}, 1500, 'easeOutExpo');
+
+						$('#section1').find('p').first().fadeIn(1800, function(){
+							$('#section1').find('p').last().fadeIn(1800);
+						});
+
+					}
+					//section 4
+					if(anchorLink == 'lastPage'){
+						//moving the image
+						$('#section4').find('.intro').delay(500).animate({
+							left: '0%'
+						}, 1500, 'easeOutExpo');
+					}
+				}
+			});
+
+		});
+	</script>
+
+	<style>
+		#section1 p{
+			display:none;
+		}
+        #section2 p img{
+            width:6%;
+        }
+        #section3 p img{
+            width:6%;
+        }
+		#section4 .intro{
+			left: -130%;
+			position:relative;
+		}
+	</style>
+
+</head>
+<body>
+
+
+
+<div id="fullpage">
+	<div class="section " id="section0">
+		<h1>Rccoder's Home</h1>
+		<p>Personal Home Page Of Rccoder</p><br><br>
+		<p>Welcome!</p>
+	</div>
+	<div class="section" id="section1">
+		<div class="intro">
+			<img src="imgs/1.png" alt="Cool" />
+			<h1>About Me</h1>
+			<p>A Student In Harbin Institute Of Technology</p>
+			<p>Like Code, Web, and Cool Things</p>
+		</div>
+	</div>
+    <div class="section" id="section2">
+        <div class="intro">
+            <img src="imgs/2.png" alt="Cool" />
+            <h1>Contact Me</h1>
+            <p>You Can Find Me Under The Link Below</p><br><br>
+            <p>
+                <a href="http://weibo.com/rccoder"><img src="imgs/iconfont-weibo.svg"></a>
+                <a href="http://segmentfault.com/u/rccoder"><img src="imgs/iconfont-iconsf.svg"></a>
+                <a href="http://www.zhihu.com/people/yangshangbin"><img src="imgs/iconfont-cnzhihu.svg"></a>
+                <a href="http://github.com/rccoder"><img src="imgs/iconfont-github.svg"></a>
+            </p>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="intro">
+            <img src="imgs/3.png" alt="Cool" />
+            <h1>The Site</h1>
+            <p>Some Of My Personal Site</p><br><br><br><br>
+            <p>
+                <a href="http://life.rccoder.net" title="Life"><img src="imgs/iconfont-life.svg"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="http://blog.rccoder.net" title="Blog"><img src="imgs/iconfont-code.svg"></a>
+            </p>
+            <p></p>
+        </div>
+    </div>
+	<div class="section" id="section4">
+		<div class="intro">
+			<h1>Thanks</h1>
+			<p>
+                <a href="https://github.com/alvarotrigo/fullPage.js">fullPage.js</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="http://www.iconfont.cn/search?q=full">iconfont.cn</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="http://jquery.com/">JQuery</a>
+            </p>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
